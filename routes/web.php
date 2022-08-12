@@ -15,9 +15,19 @@ use App\Http\Controllers\MahasiswaController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('layouts.master');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/', [DashboardController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
+Route::resource('mhs', MahasiswaController::class);
 Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('search');
+
+
+Route::get('/create', function () {
+    return view('mahasiswa.create');
+});
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

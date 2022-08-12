@@ -19,7 +19,14 @@ class MahasiswaController extends Controller
 
         // dd($mhs);
 
-        return view('layouts.master', compact('mhs'));
+        return view('mahasiswa.index', compact('mhs'));
+    }
+
+    public function destroy(MahasiswaModel $mhs)
+    {
+        $mhs->delete();
+
+        return redirect()->route('mhs.index')->with('success', 'Mahasiswa Berhasil di Hapus');
     }
     
 }
