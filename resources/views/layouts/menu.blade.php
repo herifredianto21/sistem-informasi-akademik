@@ -28,10 +28,11 @@
                     <li><a href="/dashboard"><i class="fa fa-home"></i> Home</a></li>
                     <li><a><i class="fa fa-edit"></i> Menu <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="/mahasiswa">Mahasiswa</a></li>
-                            <li><a href="/ruangan">Ruangan</a></li>
-                            <li><a href="/paket">Paket</a></li>
-                            <li><a href="/kehadiran">Kehadiran</a></li>
+                            <li><a href="/mahasiswa">Manage Mahasiswa</a></li>
+                            <li><a href="/ruangan">Manage Ruangan</a></li>
+                            <li><a href="/paket">Manage Paket</a></li>
+                            <li><a href="/kehadiran">Manage Kehadiran</a></li>
+                            <li><a href="#">Manage Dosen</a></li>
                         </ul>
                     </li>
                 </ul>

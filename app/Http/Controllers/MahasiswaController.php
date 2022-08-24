@@ -22,6 +22,24 @@ class MahasiswaController extends Controller
         return view('mahasiswa.index', compact('mhs'));
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required|max:255',
+            'tgl_lahir' => 'required',
+            'umur' => 'required',
+            'jk' => 'required',
+            'no_telp' => 'required',
+            'alamat' => 'required',
+            'email' => 'required',
+        ]);
+
+        // dd($request);
+
+        MahasiswaModel::create($request->all());
+        return redirect('/mahasiswa')->with('success', 'Game is successfully saved');
+    }
+
     public function destroy(MahasiswaModel $mhs)
     {
         $mhs->delete();
