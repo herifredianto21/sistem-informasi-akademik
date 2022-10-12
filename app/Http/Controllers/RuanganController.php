@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ruangan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RuanganController extends Controller
 {
@@ -13,7 +15,9 @@ class RuanganController extends Controller
      */
     public function index()
     {
-        //
+        $ruangan = DB::table('ruangan')->get();
+
+        return view('ruangan.index', compact('ruangan'));
     }
 
     /**

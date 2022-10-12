@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KehadiranController extends Controller
 {
@@ -13,7 +14,10 @@ class KehadiranController extends Controller
      */
     public function index()
     {
-        //
+        $hdr = DB::table('kehadiran')->get();
+
+        // dd($hdr);
+        return view('kehadiran.index', compact('hdr'));
     }
 
     /**

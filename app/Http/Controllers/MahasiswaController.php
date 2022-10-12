@@ -22,6 +22,45 @@ class MahasiswaController extends Controller
         return view('mahasiswa.index', compact('mhs'));
     }
 
+    public function edit($id)
+    {
+        $mhs = MahasiswaModel::findOrFail($id);
+        return view('mahasiswa.edit', compact('mhs'));
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Author  $author
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'tgl_lahir' => 'required',
+            'umur' => 'required',
+            'jk' => 'required',
+            'no_telp' => 'required',
+            'alamat' => 'required',
+            'email' => 'required',
+        ]);
+
+        $mhs = MahasiswaModel::findOrFail($id);
+        $mhs->nama = $request->nama;
+        $mhs->tgl_lahir = $request->tgl_lahir;
+        $mhs->umur = $request->umur;
+        $mhs->jk = $request->jk;
+        $mhs->no_telp = $request->no_telp;
+        $mhs->alamat = $request->alamat;
+        $mhs->email = $request->email;
+        $mhs->save();
+        return redirect()->route('mhs.index');
+
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -40,11 +79,15 @@ class MahasiswaController extends Controller
         return redirect('/mahasiswa')->with('success', 'Game is successfully saved');
     }
 
-    public function destroy(MahasiswaModel $mhs)
+    public function destroy($id)
     {
-        $mhs->delete();
+        // $mhs->delete();
 
-        return redirect()->route('mhs.index')->with('success', 'Mahasiswa Berhasil di Hapus');
+        // return redirect()->route('mhs.index')->with('success', 'Mahasiswa Berhasil di Hapus');
+
+        $mhs = MahasiswaModel::findOrFail($id);
+        $mhs->delete();
+        return redirect()->route('mhs.index');
     }
     
 }
