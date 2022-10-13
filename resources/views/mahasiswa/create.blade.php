@@ -81,11 +81,20 @@
                                         <input class="form-control" name="alamat" class='address' required="required" type="text" /></div>
                                 </div>
                                 <div class="field item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3  label-align">email<span class="required">*</span></label>
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Email<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
                                         <input class="form-control" name="email" class='email' required="required" type="email" /></div>
                                 </div>
-                                
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Prodi<span class="required"></span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" name="nama_prodi" class='nama_prodi' required="required" type="text" /></div>
+                                </div>
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Photo<span class="required"></span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" name="photo" class='photo' required="required" type="file" /></div>
+                                </div>
                                 {{-- <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Number <span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">

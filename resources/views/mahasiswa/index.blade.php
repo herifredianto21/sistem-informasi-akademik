@@ -66,6 +66,8 @@
                                                 <th>No Telepon</th>
                                                 <th>Alamat</th>
                                                 <th>E-mail</th>
+                                                <th>Nama Prodi</th>
+                                                <th>Photo</th>
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
@@ -80,6 +82,16 @@
                                                     <td>{{ $mhss->no_telp}}</td>
                                                     <td>{{ $mhss->alamat}}</td>
                                                     <td>{{ $mhss->email}}</td>
+                                                    <td>{{ $mhss->nama_prodi}}</td>
+                                                    <td>
+                                                        {{-- jika ekstensi file adalah png, jpg atau jpeg maka tampilkan gambar  --}}
+                                                        @if( in_array(pathinfo($mhss->photo, PATHINFO_EXTENSION), ['png', 'jpg', 'JPEG']))
+                                                            <img src="{{asset('file_upload')}}/{{$mhss->photo}}" style="height: 10%">
+                                                        @else
+                                                            <img src="https://www.freeiconspng.com/uploads/file-txt-icon--icon-search-engine--iconfinder-14.png"
+                                                            style="height: 10%">
+                                                        @endif
+                                                    </td>
                                                     <td class="text-center">
                                                         <form action="{{ route('mhs.destroy',$mhss->id) }}" method="POST">
                                         

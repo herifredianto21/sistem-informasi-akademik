@@ -46,7 +46,20 @@ class MahasiswaController extends Controller
             'no_telp' => 'required',
             'alamat' => 'required',
             'email' => 'required',
+            'nama_prodi' => 'required',
+            'photo' => 'required|image|mimes:png,jpg,jpeg'
         ]);
+
+        // $file = $request->file('photo');
+
+        // $nama_file = $request->getClientOriginalName();
+
+        // $file->move('file_upload', $file->getClientOriginalName());
+
+        $image = $request->file('photo');
+        $image->storeAs('public/file_photo', $image->hashName());
+
+        // $mhs = new ;
 
         $mhs = MahasiswaModel::findOrFail($id);
         $mhs->nama = $request->nama;
@@ -56,6 +69,8 @@ class MahasiswaController extends Controller
         $mhs->no_telp = $request->no_telp;
         $mhs->alamat = $request->alamat;
         $mhs->email = $request->email;
+        $mhs->nama_prodi = $request->nama_prodi;
+        $mhs->photo = $image->hashName();
         $mhs->save();
         return redirect()->route('mhs.index');
 
@@ -71,12 +86,42 @@ class MahasiswaController extends Controller
             'no_telp' => 'required',
             'alamat' => 'required',
             'email' => 'required',
+            'nama_prodi' => 'required',
+            'photo' => 'required|image|mimes:png,jpg,jpeg'
         ]);
 
         // dd($request);
 
-        MahasiswaModel::create($request->all());
-        return redirect('/mahasiswa')->with('success', 'Game is successfully saved');
+        // MahasiswaModel::create($request->all());
+
+        $image = $request->file('photo');
+        $image->storeAs('public/file_photo', $image->hashName());
+
+        $akademik = MahasiswaModel::create([
+            'nama' => $request->nama,
+            'tgl_lahir' => $request->tgl_lahir,
+            'umur' => $request->umur,
+            'jk' => $request->jk,
+            'no_telp' => $request->no_telp,
+            'alamat' => $request->alamat,
+            'email' => $request->email,
+            'nama_prodi' => $request->nama_prodi,
+            'photo' => $image->hashName()
+        ]);
+
+        
+        if($akademik){
+            //redirect dengan pesan sukses
+            return redirect()->route('mhs.index')->with('success', 'Data Berhasil Disimpan!');
+            // return redirect()->route('blog.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        }else{
+            //redirect dengan pesan error
+            // return redirect()->route('blog.index')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->route('mhs.index')->with('error', 'Data Gagal Disimpan!');
+        }
+
+
+        // return redirect('/mahasiswa')->with('success', 'Game is successfully saved');
     }
 
     public function destroy($id)
