@@ -27,7 +27,7 @@ class RuanganController extends Controller
      */
     public function create()
     {
-        //
+        return view('ruangan.create');
     }
 
     /**
@@ -38,7 +38,17 @@ class RuanganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_ruang' => 'required',
+        ]);
+
+        $ruangan = new Ruangan();
+        $ruangan->nama_ruang = $request->nama_ruang;
+
+        $ruangan->save();
+
+        return redirect()->route('ruangan.index');
+        
     }
 
     /**
@@ -60,7 +70,8 @@ class RuanganController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ruangan = Ruangan::findOrFail($id);
+        return view('ruangan.edit', compact('ruangan'));
     }
 
     /**
@@ -72,7 +83,15 @@ class RuanganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_ruang' => 'required',
+        ]);
+
+        $ruangan = Ruangan::find($id);
+        $ruangan->nama_ruang = $request->input('nama_ruang');
+        $ruangan->save();
+
+        return redirect()->route('ruangan.index');
     }
 
     /**
@@ -83,6 +102,8 @@ class RuanganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ruangan = Ruangan::findOrFail($id);
+        $ruangan->delete();
+        return redirect()->route('ruangan.index');
     }
 }

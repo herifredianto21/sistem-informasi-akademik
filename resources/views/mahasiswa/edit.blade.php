@@ -44,7 +44,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form action="{{ route('mhs.update', $mhs->id) }}" method="post">
+                        <form action="{{ route('mhs.update', $mhs->id) }}" method="POST" enctype="multipart/form-data">
                             @method('put')
                             @csrf
                             <p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
@@ -95,7 +95,20 @@
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $mhs->email }}" required="required" type="email" /></div>
                             </div>
-                            
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Prodi<span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control @error('nama_prodi') is-invalid @enderror" name="nama_prodi" value="{{ $mhs->nama_prodi }}" required="required" type="text" />
+                                </div>
+                            </div>
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align">Photo<span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control" name="photo" type="file" placeholder="Photo">
+                                    <img src="{{ asset('storage/uploads/mahasiswa/'.$mhs->photo) }}" height="200" width="200" alt="" />
+                                    
+                                </div>
+                            </div>
                             <div class="ln_solid">
                                 <div class="form-group">
                                     <div class="col-md-6 offset-md-3">

@@ -51,7 +51,7 @@
                                 <div class="col-sm-12">
                                     <div class="card-box table-responsive">
                                         <p class="text-muted font-13 m-b-30">
-                                            <a href="/create"><button class="btn btn-primary">Tambah <span class="glyphicon glyphicon-plus"></span></button></a>
+                                            <a href="{{route('ruangan.create')}}"><button class="btn btn-primary">Tambah <span class="glyphicon glyphicon-plus"></span></button></a>
                                             <button type="button" class="btn btn-warning btn-xs">Print <span class="glyphicon glyphicon-print"></span></button>
                                         </p>
                             
@@ -60,7 +60,7 @@
                                             <tr>
                                                 <th>Id</th>
                                                 <th>Nama Ruangan</th>
-                                                <th>Action</th>
+                                                <th align="center">Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -69,11 +69,11 @@
                                                     <td>{{ $ruangann->id}}</td>
                                                     <td>{{ $ruangann->nama_ruang}}</td>
                                                     <td class="text-center">
-                                                        <form action="{{ route('mhs.destroy',$ruangann->id) }}" method="POST">
+                                                        <form action="{{ route('ruangan.destroy',$ruangann->id) }}" method="POST">
                                         
-                                                            <a class="btn btn-info btn-sm" href="{{ route('mhs.show',$ruangann->id) }}">Show </a>
+                                                            <a class="btn btn-info btn-sm" href="{{ route('ruangan.show',$ruangann->id) }}">Show </a>
                                         
-                                                            <a class="btn btn-primary btn-sm" href="{{ route('mhs.edit',$ruangann->id) }}">Edit <span class="glyphicon glyphicon-edit"></span></a>
+                                                            <a class="btn btn-primary btn-sm" href="{{ route('ruangan.edit',$ruangann->id) }}">Edit <span class="glyphicon glyphicon-edit"></span></a>
                                         
                                                             @csrf
                                                             @method('DELETE')

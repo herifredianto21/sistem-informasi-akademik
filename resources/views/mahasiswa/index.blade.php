@@ -84,13 +84,14 @@
                                                     <td>{{ $mhss->email}}</td>
                                                     <td>{{ $mhss->nama_prodi}}</td>
                                                     <td>
-                                                        {{-- jika ekstensi file adalah png, jpg atau jpeg maka tampilkan gambar  --}}
+                                                        {{-- jika ekstensi file adalah png, jpg atau jpeg maka tampilkan gambar 
                                                         @if( in_array(pathinfo($mhss->photo, PATHINFO_EXTENSION), ['png', 'jpg', 'JPEG']))
-                                                            <img src="{{asset('file_upload')}}/{{$mhss->photo}}" style="height: 10%">
+                                                            <img src="{{asset('storage/uploads/mahasiswa')}}/{{$mhss->photo}}" style="width: 250px; height: 10%">
                                                         @else
                                                             <img src="https://www.freeiconspng.com/uploads/file-txt-icon--icon-search-engine--iconfinder-14.png"
                                                             style="height: 10%">
-                                                        @endif
+                                                        @endif --}}
+                                                        <img src="{{ asset('storage/uploads/mahasiswa/'.$mhss->photo) }}" height="75" width="75" alt="" />
                                                     </td>
                                                     <td class="text-center">
                                                         <form action="{{ route('mhs.destroy',$mhss->id) }}" method="POST">

@@ -29,7 +29,7 @@
                     <li><a><i class="fa fa-edit"></i> Menu <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li {{ request()->is('/mahasiswa') ? 'active' : '' }}><a href="/mahasiswa">Manage Mahasiswa</a></li>
-                            <li {{ request()->is('/ruangan') ? 'active' : '' }}><a href="/ruangan">Manage Ruangan</a></li>
+                            <li {{ request()->is(route('ruangan.index')) ? 'active' : '' }}><a href="{{ route('ruangan.index') }}">Manage Ruangan</a></li>
                             <li {{ request()->is('/paket') ? 'active' : '' }}><a href="/paket">Manage Paket</a></li>
                             <li><a href="{{route('hdr.index')}}">Manage Kehadiran</a></li>
                             <li {{ request()->is('/#') ? 'active' : '' }}><a href="#">Manage Dosen</a></li>

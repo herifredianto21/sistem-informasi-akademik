@@ -21,9 +21,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/beranda', function () {
+    return view('layouts_website/master');
+});
+
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::resource('mhs', MahasiswaController::class);
+
+Route::resource('ruangan', RuanganController::class);
 
 Route::resource('hdr', KehadiranController::class);
 // Route::get('/kehadiran', function () {
