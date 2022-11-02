@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jurusan;
-use App\Models\MahasiswaModel;
+use App\Models\Dosen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class DashboardController extends Controller
+class DosenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,29 +15,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $count_mahasiswa = DB::table('mahasiswa')->count();
-        $count_jenis_male = MahasiswaModel::where('jk', 'male')->count();
-        $count_jenis_female = MahasiswaModel::where('jk', 'female')->count();
-
-        $count_jurusan = DB::table('jurusans')->count();
-
-        $count_mahasiswa_if = MahasiswaModel::where('jurusan_id', '1')->count();
-
-        $count_mahasiswa_si = MahasiswaModel::where('jurusan_id', '2')->count();
-
-        $count_mahasiswa_teksip = MahasiswaModel::where('jurusan_id', '3')->count();
-
-        $count_mahasiswa_tekmes = MahasiswaModel::where('jurusan_id', '4')->count();
-
-        $count_mahasiswa_menekon = MahasiswaModel::where('jurusan_id', '4')->count();
-
-
-
-
-
-        // dd($count_mahasiswa_if);
-        
-        return view('dashboard', compact('count_mahasiswa', 'count_jenis_male', 'count_jenis_female', 'count_jurusan', 'count_mahasiswa_if', 'count_mahasiswa_si', 'count_mahasiswa_teksip', 'count_mahasiswa_tekmes', 'count_mahasiswa_menekon'));
+        // $dosens = Dosen::with('jurusan')->orderBy('nama')->paginate(5);
+        $dosens = Dosen::all()->load('jurusans');
+        return view('dosen.index', compact('dosens'));
     }
 
     /**
@@ -48,7 +27,8 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        $dosens = DB::table('jurusans')->get();
+        return view('dosen.create', compact('dosens'));
     }
 
     /**
@@ -59,7 +39,19 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nid' => 'required',
+            'nama' => 'required',
+            'jurusan_id' => 'required'
+        ]);
+
+        $dosens = new Dosen();
+        $dosens->nid = $request->input('nid');
+        $dosens->nama = $request->input('nama');
+        $dosens->jurusan_id = $request->input('jurusan_id');
+        $dosens->save();
+
+        return redirect()->route('ds.index');
     }
 
     /**

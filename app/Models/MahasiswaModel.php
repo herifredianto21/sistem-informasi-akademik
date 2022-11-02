@@ -11,5 +11,9 @@ class MahasiswaModel extends Model
 
     protected $table = 'mahasiswa';
     // protected $primaryKey = 'id_mahasiswa';
-    protected $fillable = ['id', 'nama', 'tgl_lahir', 'umur', 'alamat', 'jk', 'no_telp', 'email', 'nama_prodi', 'photo'];
+    protected $fillable = ['id', 'nama', 'tgl_lahir', 'umur', 'alamat', 'jk', 'no_telp', 'email', 'jurusan_id', 'nama_prodi', 'photo'];
+
+    public function jurusans() {
+        return $this->belongsTo('App\Models\Jurusan');
+    }
 }

@@ -67,9 +67,26 @@
                                         <input class="form-control" name="umur" class='age' required="required" type="number" /></div>
                                 </div>
                                 <div class="field item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Jenis Kelamin<span class="required">*</span></label>
+                                    {{-- <label class="col-form-label col-md-3 col-sm-3  label-align">Jenis Kelamin<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="jk" required="required" type="text" /></div>
+                                        {{-- <input class="form-control" name="jk" required="required" type="text" /></div> --}}
+                                        {{-- <select name="jk" id="jk" class="form-control">
+                                            <option disabled>Pilih :</option>
+                                            <option value="male">male</option>
+                                            <option value="female">female</option>
+                                        </select>
+                                    </div>  --}}
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
+											<div class="col-md-6 col-sm-6 ">
+												<div id="jk" name="jk" class="btn-group" data-toggle="buttons">
+													<label class="btn btn-secondary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+														<input type="radio" name="jk" value="male" class="join-btn"> &nbsp; Male &nbsp;
+													</label>
+													<label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+														<input type="radio" name="jk" value="female" class="join-btn"> Female
+													</label>
+												</div>
+											</div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">No Telepon<span class="required">*</span></label>
@@ -87,9 +104,22 @@
                                         <input class="form-control" name="email" class='email' required="required" type="email" /></div>
                                 </div>
                                 <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Id Jurusan<span class="required"></span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        {{-- <input class="form-control" name="id_jurusan" class='id_jurusan' required="required" type="text" /> --}}
+                                        <select class="custom-select" name="jurusan_id" id="jurusan_id" required>
+                                            <option selected>Pilih :</option>
+                                            @foreach ($jurusans as $jurusanss)
+                                                <option value="{{ $jurusanss->id }}">{{$jurusanss->nama}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Prodi<span class="required"></span></label>
                                     <div class="col-md-6 col-sm-6">
-                                        <input class="form-control" name="nama_prodi" class='nama_prodi' required="required" type="text" /></div>
+                                        <input class="form-control" name="nama_prodi" class='nama_prodi' required="required" type="text" />
+                                    </div>
                                 </div>
                                 <div class="field item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3  label-align">Photo<span class="required"></span></label>
@@ -133,7 +163,10 @@
                                 <div class="ln_solid">
                                     <div class="form-group">
                                         <div class="col-md-6 offset-md-3">
-                                            <button type='submit' class="btn btn-primary">Submit</button>
+                                            <a href="{{ url()->previous() }}" class="btn btn-default">Back</a>
+                                            {{-- <a href="{{route('mhs.index')}}"><button class="btn btn-primary">Back</button></a> --}}
+                                            <button class="btn btn-danger" type="reset">Reset</button>
+											<button type='submit' class="btn btn-success">Submit</button>
                                             {{-- <button type='reset' class="btn btn-success">Reset</button> --}}
                                         </div>
                                     </div>

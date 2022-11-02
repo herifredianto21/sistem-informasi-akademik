@@ -32,7 +32,10 @@
                             <li {{ request()->is(route('ruangan.index')) ? 'active' : '' }}><a href="{{ route('ruangan.index') }}">Manage Ruangan</a></li>
                             <li {{ request()->is('/paket') ? 'active' : '' }}><a href="/paket">Manage Paket</a></li>
                             <li><a href="{{route('hdr.index')}}">Manage Kehadiran</a></li>
-                            <li {{ request()->is('/#') ? 'active' : '' }}><a href="#">Manage Dosen</a></li>
+                            <li {{ request()->is(route('ds.index')) ? 'active' : '' }}><a href="{{ route('ds.index') }}">Manage Dosen</a></li>
+                            <li {{ request()->is(route('jrs.index')) ? 'active' : '' }}><a href="{{ route('jrs.index') }}">Manage Jurusan</a></li>
+                            <li {{ request()->is(route('statusmhsw.index')) ? 'active' : '' }}><a href="{{ route('statusmhsw.index') }}">Manage Status Mahasiswa</a></li>
+                            <li {{ request()->is(route('kontak.index')) ? 'active' : '' }}><a href="{{ route('kontak.index') }}">Manage Contact</a></li>
                         </ul>
                     </li>
                 </ul>

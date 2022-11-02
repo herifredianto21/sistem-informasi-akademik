@@ -96,6 +96,12 @@
                                     <input class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $mhs->email }}" required="required" type="email" /></div>
                             </div>
                             <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align">Pilih Jurusan<span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control @error('jurusan_id') is-invalid @enderror" name="jurusan_id" value="{{ $mhs->jurusan_id }}" required="required" type="text" />
+                                </div>
+                            </div>
+                            <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Nama Prodi<span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control @error('nama_prodi') is-invalid @enderror" name="nama_prodi" value="{{ $mhs->nama_prodi }}" required="required" type="text" />
