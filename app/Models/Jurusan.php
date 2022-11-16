@@ -10,7 +10,7 @@ class Jurusan extends Model
     use HasFactory;
 
     protected $table = 'jurusans';
-    protected $fillable =['id', 'nama', 'ketua_jurusan', 'daya_penampung'];
+    protected $fillable =['id', 'kode_jurusan', 'nama', 'ketua_jurusan', 'daya_penampung'];
 
     public function dosens(){
         return $this->hasMany('App\Models\Dosen');

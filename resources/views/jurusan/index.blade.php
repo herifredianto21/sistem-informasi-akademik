@@ -59,6 +59,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
+                                                    <th>Kode Jurusan</th>
                                                     <th>Nama</th>
                                                     <th>Ketua Jurusan</th>
                                                     <th>Daya Tampung</th>
@@ -69,6 +70,7 @@
                                                 @foreach ($jurusans as $jurusanss)
                                                 <tr>
                                                     <td>{{ $jurusanss->id}}</td>
+                                                    <td>{{ $jurusanss->kode_jurusan}}</td>
                                                     <td>{{ $jurusanss->nama}}</td>
                                                     <td>{{ $jurusanss->ketua_jurusan}}</td>
                                                     <td>{{ $jurusanss->daya_tampung}}</td>

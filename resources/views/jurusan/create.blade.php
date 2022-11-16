@@ -51,9 +51,15 @@
                                 </p>
                                 <span class="section"></span>
                                 <div class="field item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Kode<span class="required">*</span></label>
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Id<span class="required">*</span></label>
                                     <div class="col-md-6 col-sm-6">
                                         <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="id" required="required" disabled/>
+                                    </div>
+                                </div>
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Kode Jurusan<span class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="kode_jurusan" required="required" disabled/>
                                     </div>
                                 </div>
                                 <div class="field item form-group">

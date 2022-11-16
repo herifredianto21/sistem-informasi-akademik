@@ -57,6 +57,12 @@
                                 </div>
                             </div>
                             <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Kode Jurusan<span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control @error('kode_jurusan') is-invalid @enderror" data-validate-length-range="6" data-validate-words="2" name="kode_jurusan" value="{{ $jurusans->kode_jurusan }}" disabled/>
+                                </div>
+                            </div>
+                            <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align">Nama<span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ $jurusans->nama }}" type="text" />
